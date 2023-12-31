@@ -33,7 +33,7 @@ export default function UserMenu() {
     };
     document.addEventListener("click", clickHandler);
     return () => document.removeEventListener("click", clickHandler);
-  });
+  },[dropdownOpen]);
 
   // close if the esc key is pressed
   useEffect(() => {
@@ -43,7 +43,7 @@ export default function UserMenu() {
     };
     document.addEventListener("keydown", keyHandler);
     return () => document.removeEventListener("keydown", keyHandler);
-  });
+  },[dropdownOpen]);
   return (
     <div className="relative inline-flex">
       <button

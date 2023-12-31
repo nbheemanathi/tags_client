@@ -22,16 +22,17 @@ export default function SideMenu(props) {
     props.OnCollapse(collapsed);
   };
   const { user } = useContext(AuthContext);
-  const unAuthRoutes = ["/login", "/register", "/"];
   // console.log(unAuthRoutes.includes(location.pathname));
 
   useEffect(() => {
+   const unAuthRoutes = ["/login", "/register", "/"];
+
     if (unAuthRoutes.includes(location.pathname)) {
       props.SideMenuVisible(false);
     } else {
       props.SideMenuVisible(true);
     }
-  }, [location.pathname]);
+  }, [location.pathname,props]);
 
   return (
     user && (

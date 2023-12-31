@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Button, Form, Input, InputNumber, message, Select } from "antd";
+import React, { useState, useContext } from "react";
+import { Button, Form, Input, message } from "antd";
 import { useMutation } from "@apollo/client";
 import { ADD_CONTACT_MUTATION, FETCH_CONTACTS, UPDATE_CONTACT_MUTATION } from "../util/graphql";
-import { AuthContext } from "../context/auth";
 const ContactForm = (props) => {
-  const [currentContact, setCurrentContact] = useState(props.contact);
+  const [currentContact] = useState(props.contact);
 
-  const context = useContext(AuthContext);
   const [form] = Form.useForm();
   const [addContact] = useMutation(ADD_CONTACT_MUTATION, {
     refetchQueries: [{ query: FETCH_CONTACTS }],
