@@ -1,38 +1,181 @@
-.App {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.h1 {
+  font-size: 1.25rem; 
+  font-weight: 800;
+  line-height: 1.75rem;
+  letter-spacing: -0.025em;
+}
+
+.h2 {
+  font-size: 1.5rem;
+  font-weight: 800; 
+  line-height: 2rem;
+  letter-spacing: -0.025em;
+}
+
+.h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.75rem;
+}
+
+.h4 {
+  font-size: 1.25rem;
+  font-weight: 700; 
+  line-height: 1.5rem;
+  letter-spacing: -0.025em;
+}
+
+@media (min-width: 768px) {
+  .h1 {
+    font-size: 1.75rem;
+  }
+  
+  .h2 {
+    font-size: 1.5rem;
+  }
+}
+
+.btn, .btn-sm {
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 0.125rem;
+  line-height: 1.5rem;
+  transition: all 150ms ease-in-out;  
+}
+
+.btn {
+  padding: 0.5rem 2rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-sm {
+  padding: 0.25rem 1rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.form-input, 
+.form-textarea,
+.form-multiselect,
+.form-select,
+.form-checkbox,
+.form-radio {
+  background-color: #fff;
+  border: 1px solid #cbd5e0; 
+}
+
+.form-input:focus,
+.form-textarea:focus,  
+.form-multiselect:focus,
+.form-select:focus,
+.form-checkbox:focus,  
+.form-radio:focus {
+  border-color: #a0aec0;
+}
+
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select,
+.form-checkbox {
+  border-radius: 0.25rem;
+}
+
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select {
+  padding: 0.75rem 1rem;  
+}
+
+.form-input,
+.form-textarea {
+  color: #6b7280;
+}
+
+.form-select {
+  padding-right: 2.5rem;
+}
+
+.form-checkbox,
+.form-radio {
+  color: #374151;
+  border-radius: 0.125rem;
+}
+
+.banner-header span:before {
+  content: "Meals";
+  animation: animate infinite 6s;
+}
+
+@keyframes animate {
+  0% {
+    content: "Meals";
+  }
+  
+  20% {
+    content: "Workouts";
+  }
+  
+  40% {
+    content: "To-Do's";
+  }
+  
+  60% {
+    content: "Tasks";
+  }
+  
+  80% {
+    content: "Events";
+  }
+}
+
+.events {
+  margin: 0;
+  padding: 0;
+  list-style: none;  
+}
+
+.events .ant-badge-status {
+  width: 100%;
+  overflow: hidden;
+  font-size: 12px;
+  white-space: nowrap;
+  text-overflow: ellipsis; 
+}
+
+.notes-month {
+  font-size: 28px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.notes-month section {
+  font-size: 28px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.ant-message-notice-content .ant-message-custom-content {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.rbc-event-label {
+  display: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.notification_message {
+  position: absolute;
+  top: 80px;
+  right: 30px;
+  padding: 10px;
+}
+.ant-btn-primary {
+  background-color: #00588c !important;
+  border-color: #00588c !important;
 }
