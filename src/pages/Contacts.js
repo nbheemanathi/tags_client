@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ContactsList from "../components/ContactsList";
-import { FETCH_CONTACTS } from "../util/graphql";
 import ContactForm from "../components/ContactForm";
 
 const Contacts = () => {

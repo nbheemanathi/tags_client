@@ -18,6 +18,7 @@ export const FETCH_CONTACTS = gql`
       firstName
       id
       lastName
+      phone
     }
   }
 `;
@@ -26,18 +27,21 @@ export const ADD_CONTACT_MUTATION = gql`
     $firstName: String!
     $lastName: String!
     $email: String!
+    $phone: Float
   ) {
     addUser(
       userInput: {
         firstName: $firstName
         lastName: $lastName
         email: $email
+        phone: $phone
       }
     ) {
       id
       firstName
       lastName
       email     
+      phone
     }
   }
 `;
@@ -47,6 +51,7 @@ export const UPDATE_CONTACT_MUTATION = gql`
     $firstName: String!
     $lastName: String!
     $email: String!
+    $phone: Float
   ) {
     updateUser(
       userInput: {
@@ -54,12 +59,14 @@ export const UPDATE_CONTACT_MUTATION = gql`
         firstName: $firstName
         lastName: $lastName
         email: $email    
+        phone: $phone
       }
     ) {
       id
       firstName
       lastName
       email
+      phone
     }
   }
 `;

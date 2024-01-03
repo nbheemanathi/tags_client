@@ -119,6 +119,11 @@ const ContactsList = (props) => {
       key: "email",
     },
     {
+        title: "Phone",
+        dataIndex: "phone",
+        key: "phone",
+      },
+    {
       title: "Action",
       dataIndex: "",
       width: "10%",

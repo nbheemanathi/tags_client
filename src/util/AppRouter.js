@@ -10,6 +10,7 @@ import MainContent from "../partials/mainContent/MainContent";
 import Dashboard from "../pages/Dashboard";
 import Login from "../pages/Login";
 import Contacts from "../pages/Contacts";
+import Search from "../pages/Search";
 
 export default function AppRouter() {
   const [collapse, setCollapse] = useState(false);
@@ -28,6 +29,7 @@ export default function AppRouter() {
               <AuthRoute exact path="/login" component={Login} />
               <AuthRoute exact path="/dashboard" component={Dashboard} />
               <AuthRoute exact path="/contacts" component={Contacts} />
+              <AuthRoute exact path="/search" component={Search} />
             </MainContent>
           </Layout>
         </Layout>

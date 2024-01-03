@@ -61,7 +61,8 @@ export default function SideMenu(props) {
             <Link exact to="/contacts" />
           </Menu.Item>
           <Menu.Item key="7" icon={<BoxPlotOutlined style={{ fontSize: "1.2rem" }} />}>
-            More
+            Search
+            <Link exact to="/search" />            
           </Menu.Item>
         </Menu>
       </Sider>

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Button, Form, Input, message } from "antd";
+import { Button, Form, Input, message, InputNumber } from "antd";
 import { useMutation } from "@apollo/client";
 import { ADD_CONTACT_MUTATION, FETCH_CONTACTS, UPDATE_CONTACT_MUTATION } from "../util/graphql";
 const ContactForm = (props) => {
@@ -50,7 +50,8 @@ const ContactForm = (props) => {
             userId: currentContact.id,
             firstName: data.firstName,
             lastName: data.lastName,
-            email: data.email,           
+            email: data.email,     
+            phone: parseInt(data.phone),      
           },
         });
     } else {
@@ -59,9 +60,11 @@ const ContactForm = (props) => {
           firstName: data.firstName,
           lastName: data.lastName,
           email: data.email,
+          phone: parseInt(data.phone),
         },
       });
     }
+    props.onCancel()
   };
   return (
     <div className="p-6 bg-white">
@@ -101,7 +104,9 @@ const ContactForm = (props) => {
         >
           <Input />
         </Form.Item>
-      
+        <Form.Item label="Phone" name="phone">
+          <InputNumber controls={false} className="ant-input-number" />
+        </Form.Item>
         <Form.Item wrapperCol={{ offset: 4, span: 10 }}>
           <Button className="bg-[#1677ff]" type="primary" htmlType="submit">
             Submit
