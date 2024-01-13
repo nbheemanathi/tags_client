@@ -7,9 +7,9 @@ export const useForm = (callback, initialState = {}) => {
     setValues({ ...values, [event.target.name]: event.target.value });
   };
 
-  const onSubmit = (event) => {
+  const onSubmit = () => {
     
-    event.preventDefault();
+    // event.preventDefault();
     callback();
   };
   const resetForm = () => {    

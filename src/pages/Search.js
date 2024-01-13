@@ -16,7 +16,7 @@ function Search() {
   const users = useQuery(FETCH_CONTACTS);
   const [selectedUser, setSelectedUser] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
-  const [message, setMessage] = useState(null)
+  const [message, setMessage] = useState(null);
   const onUserChange = async (user) => {
     setSelectedUser(user);
     const userData = users.data?.getUsers.find((s) => s.id == user);
@@ -27,16 +27,14 @@ function Search() {
   };
   const [search, { loading }] = useMutation(SEARCH_USER, {
     update(_, result) {
-      if(result.data.searchUser.length > 0){
+      if (result.data.searchUser.length > 0) {
         setCurrentUser(result.data.searchUser[0]);
         setSelectedUser(result.data.searchUser[0]);
         setMessage(null);
-      }
-      else{
-        setCurrentUser(null)
-        setSelectedUser(null)
-        setMessage("No user found")
-        
+      } else {
+        setCurrentUser(null);
+        setSelectedUser(null);
+        setMessage("No user found");
       }
     },
     onError(err) {
@@ -46,14 +44,28 @@ function Search() {
     variables: values,
   });
 
-  
   function mutation() {
     search();
   }
   return (
     <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
       <h2 className="text-primary-default font-bold text-2xl mb-5">Select User</h2>
-      <Button className="bg-[#1677ff]" type="primary" icon={<PlusOutlined />} onClick={() => setCurrentUser({})}>
+      <Button
+        className="bg-[#1677ff]"
+        type="primary"
+        icon={<PlusOutlined />}
+        onClick={() => {
+          resetForm();
+          setMessage(null);
+          setCurrentUser(null);
+          setSelectedUser(null);
+          setTimeout(() => {
+            setCurrentUser({});
+          }, 100);
+
+          // setSelectedUser(null);
+        }}
+      >
         Add User
       </Button>
       <div className="grid grid-cols-12 gap-6 mt-5">
@@ -89,7 +101,22 @@ function Search() {
                   })}
                 </Select>
               )} */}
-              <form onSubmit={onSubmit} className="my-8">
+              <form onSubmit={(event) => {
+                  event.preventDefault()
+
+                if(values.email == "" && values.firstName == "" && values.lastName == ""){
+                  setMessage("Please enter atleast one field");
+                
+                }
+                else{
+                  setCurrentUser(null);
+                  setSelectedUser(null);
+                  setTimeout(() => {
+                    onSubmit()
+                  }, 100);
+                }
+                
+              }} className="my-8">
                 <div className="flex flex-col space-y-4">
                   <div>
                     <label className="block text-sm font-medium mb-1 outline-none">First Name</label>
@@ -130,7 +157,15 @@ function Search() {
                 </div>
                 <div className="flex items-center justify-between mt-6">
                   <div className="mr-5">
-                    <button type="button" className="text-sm underline outline-none" onClick={() => resetForm()}>
+                    <button
+                      type="button"
+                      className="text-sm underline outline-none"
+                      onClick={() => {
+                        resetForm();
+                        setCurrentUser(null);
+                        setSelectedUser(null);
+                      }}
+                    >
                       Clear
                     </button>
                   </div>
@@ -150,7 +185,7 @@ function Search() {
                 onCancel={() => {
                   setSelectedUser(null);
                   setCurrentUser(null);
-                  resetForm()
+                  resetForm();
                 }}
               />
             </div>
@@ -160,7 +195,6 @@ function Search() {
               <div className="text-center text-gray-500">{message}</div>
               <div className="text-center text-gray-500">Please search again</div>
               <div className="text-center text-gray-500">Or add a new user</div>
-              
             </div>
           )}
         </div>
