@@ -8,7 +8,7 @@ import { useForm } from "../util/hooks";
 const { Option } = Select;
 
 function Search() {
-  const { onChange, onSubmit, values, resetForm } = useForm(mutation, {
+  const { onChange, onSubmit2, values, resetForm } = useForm(mutation, {
     email: "",
     firstName: "",
     lastName: "",
@@ -112,7 +112,7 @@ function Search() {
                   setCurrentUser(null);
                   setSelectedUser(null);
                   setTimeout(() => {
-                    onSubmit()
+                    onSubmit2()
                   }, 100);
                 }
                 
