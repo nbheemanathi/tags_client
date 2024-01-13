@@ -23,44 +23,20 @@ export const FETCH_CONTACTS = gql`
   }
 `;
 export const ADD_CONTACT_MUTATION = gql`
-  mutation addUser(
-    $firstName: String!
-    $lastName: String!
-    $email: String!
-    $phone: Float
-  ) {
-    addUser(
-      userInput: {
-        firstName: $firstName
-        lastName: $lastName
-        email: $email
-        phone: $phone
-      }
-    ) {
+  mutation addUser($firstName: String!, $lastName: String!, $email: String!, $phone: Float) {
+    addUser(userInput: { firstName: $firstName, lastName: $lastName, email: $email, phone: $phone }) {
       id
       firstName
       lastName
-      email     
+      email
       phone
     }
   }
 `;
 export const UPDATE_CONTACT_MUTATION = gql`
-  mutation updateUser(
-    $userId: ID!
-    $firstName: String!
-    $lastName: String!
-    $email: String!
-    $phone: Float
-  ) {
+  mutation updateUser($userId: ID!, $firstName: String!, $lastName: String!, $email: String!, $phone: Float) {
     updateUser(
-      userInput: {
-        userId: $userId
-        firstName: $firstName
-        lastName: $lastName
-        email: $email    
-        phone: $phone
-      }
+      userInput: { userId: $userId, firstName: $firstName, lastName: $lastName, email: $email, phone: $phone }
     ) {
       id
       firstName
@@ -78,6 +54,18 @@ export const DELETE_CONTACT_MUTATION = gql`
       firstName
       lastName
       email
+    }
+  }
+`;
+
+export const SEARCH_USER = gql`
+  mutation searchUser($firstName: String, $lastName: String, $email: String) {
+    searchUser(firstName: $firstName, lastName: $lastName, email: $email) {
+      email
+      firstName
+      id
+      lastName
+      phone
     }
   }
 `;

@@ -69,7 +69,7 @@ const ContactForm = (props) => {
   return (
     <div className="p-6 bg-white">
       <div className="font-bold mb-10 text-lg text-primary-default">
-        {currentContact.id ? <span>Edit Contact</span> : <span>Add Contact</span>}
+        {currentContact.id ? <span>Edit </span> : <span>Add </span>}
       </div>
       <Form
         initialValues={currentContact}
